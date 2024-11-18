@@ -36,6 +36,4 @@ home-manager switch
 echo "Setting Zsh As Default Shell..."
 chsh -s $(which zsh)
 
-source /home/sbuglione/.zshrc
-
 exit 0
