@@ -35,4 +35,7 @@ nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager
 echo "Running Home-Manager..."
 home-manager switch
 
+echo "Setting Zsh As Default Shell..."
+chsh -s $(which zsh)
+
 exit 0
