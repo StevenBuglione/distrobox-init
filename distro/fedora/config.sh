@@ -24,7 +24,7 @@ rm -r /home/sbuglione/.oh-my-zsh/
 
 echo "Installing Oh-My-Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm /home/sbuglione/.zshrc
+
 
 echo "Removing Previous Install Of Home-Manager Repo..."
 sudo rm -r /home/sbuglione/.config/home-manager/
