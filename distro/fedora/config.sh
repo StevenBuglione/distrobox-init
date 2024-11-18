@@ -26,11 +26,11 @@ echo "Removing Previous Install Of Home-Manager Repo..."
 sudo rm -r /home/sbuglione/.config/home-manager/
 nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager.git /home/sbuglione/.config/home-manager"
 
-echo "Running Home-Manager..."
-home-manager switch
-
 echo "Installing Oh-My-Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Running Home-Manager..."
+home-manager switch
 
 echo "Setting Zsh As Default Shell..."
 chsh -s $(which zsh)
