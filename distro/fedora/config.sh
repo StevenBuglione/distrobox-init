@@ -19,8 +19,8 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/master.t
 nix-channel --update
 
 nix-shell '<home-manager>' -A install
-rm /home/sbuglione/.zshrc
-rm -r /home/sbuglione/.oh-my-zsh/
+sudo rm /home/sbuglione/.zshrc
+sudo rm -r /home/sbuglione/.oh-my-zsh/
 
 echo "Removing Previous Install Of Home-Manager Repo..."
 sudo rm -r /home/sbuglione/.config/home-manager/
