@@ -1,3 +1,6 @@
+echo "Removing git"
+sudo dnf remove -y git
+
 echo "Installing Nix..."
 su sbuglione
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
@@ -26,6 +29,5 @@ nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager
 
 echo "Running Home-Manager..."
 home-manager switch
-
 
 exit 0
