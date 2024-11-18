@@ -23,7 +23,7 @@ sudo rm -r /home/sbuglione/.oh-my-zsh/
 
 echo "Removing Previous Install Of Home-Manager Repo..."
 sudo rm -r /home/sbuglione/.config/home-manager/
-nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager.git /home/sbuglione/.config/home-manager"
+nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager.git /home/sbuglione/.config/home-manager && cd /home/sbuglione/.config/home-manager && git remote set-url origin git@github.com:StevenBuglione/home-manager.git"
 
 echo "Installing Oh-My-Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
