@@ -28,12 +28,13 @@ nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager
 echo "Installing Oh-My-Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-sudo rm /home/sbuglione/.zshrc
-
 echo "Running Home-Manager..."
-home-manager switch -b backup
+home-manager switch
 
 echo "Setting Zsh As Default Shell..."
 chsh -s $(which zsh)
+
+sudo rm /home/sbuglione/.zshrc
+home-manager switch
 
 exit 0
