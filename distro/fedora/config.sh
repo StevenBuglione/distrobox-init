@@ -1,6 +1,3 @@
-echo "Removing git"
-sudo dnf remove -y git
-
 echo "Installing Nix..."
 su sbuglione
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
