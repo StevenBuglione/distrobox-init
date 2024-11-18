@@ -22,10 +22,15 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/master.t
 nix-channel --update
 
 nix-shell '<home-manager>' -A install
+rm /home/sbuglione/.zshrc
+rm -r /home/sbuglione/.oh-my-zsh/
+
+echo "Installing Oh-My-Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Removing Previous Install Of Home-Manager Repo..."
-rm -r /home/.config/home-manager/
-nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager.git /home/.config/home-manager"
+rm -r /home/sbuglione/.config/home-manager/
+nix-shell -p git --run "git clone https://github.com/StevenBuglione/home-manager.git /home/sbuglione/.config/home-manager"
 
 echo "Running Home-Manager..."
 home-manager switch
