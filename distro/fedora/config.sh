@@ -30,7 +30,7 @@ echo "Installing Oh-My-Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Running Home-Manager..."
-home-manager switch
+home-manager switch -b backup
 
 echo "Setting Zsh As Default Shell..."
 chsh -s $(which zsh)
