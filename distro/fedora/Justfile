@@ -1,0 +1,36 @@
+# A Justfile For Automating Tasks Related To Generating, Deploying and Testing Fedora Distrobox Images
+
+set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+
+
+echo-green message:
+    @echo -e "\033[1;32m{{message}}\033[0m"
+
+echo-red message:
+    @echo -e "\033[1;31m{{message}}\033[0m"  # Suppresses this echo from being logged
+
+# Variables
+CONTAINER_NAME := "mars-1"  # Replace with your Distrobox container name
+CONFIG_SCRIPT_URL := "https://raw.githubusercontent.com/StevenBuglione/distrobox-init/refs/heads/main/distro/fedora/config.sh"
+
+
+# Build Fedora
+build:
+    @just echo-green "Building Fedora Distrobox..."
+    @distrobox assemble create --file ./fedora-box.ini
+    @just echo-green "Fedora Distrobox Built Successfully!"
+
+remove:
+    @just echo-green "Removing Fedora Distrobox..."
+    @distrobox rm mars-1 --force --yes
+    @just echo-green "Fedora Distrobox Removed Successfully!"
+
+test-build:
+    @just echo-green "Starting Fedora Distrobox Test Build With Logging..."
+    @distrobox assemble create --file ./fedora-box-test.ini
+    @just echo-green "Fedora Distrobox Test Build Completed Successfully!"
+    @distrobox enter {{CONTAINER_NAME}} -- bash -c 'curl -sSL {{CONFIG_SCRIPT_URL}} | bash'
+    @just echo-green "Configuration script executed successfully inside '{{CONTAINER_NAME}}'."
+    @just remove
+
+
