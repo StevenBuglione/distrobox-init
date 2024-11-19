@@ -1,0 +1,10 @@
+#!/bin/sh
+# distrobox_binary
+# name: fedora-box
+if [ -z "${CONTAINER_ID}" ]; then
+	exec "/usr/bin/distrobox-enter"  -n fedora-box  --  '/usr/bin/git'  "$@"
+elif [ -n "${CONTAINER_ID}" ] && [ "${CONTAINER_ID}" != "fedora-box" ]; then
+	exec distrobox-host-exec '~/.local/bin/git' "$@"
+else
+	exec '/usr/bin/git' "$@"
+fi
